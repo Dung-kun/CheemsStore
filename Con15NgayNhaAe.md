@@ -19,13 +19,10 @@
      -w /opt \
      laravelsail/php80-composer:latest \
  composer install — ignore-platform-reqs
-  + chú ý: bỏ cái dòng -u đi hoặc không được thì chạy lệnh sau 
-     docker run 
-     laravelsail/php80-composer:latest \
-     composer install — ignore-platform-reqs
+  + chú ý: chaỵ ko được thì bỏ -u rồi chạy lại 
   + từ sau, các câu lệnh yêu cần để ./vendor/bin/sail  ở đầu
   + dùng chown add owner -R là user vào thư mục /var/www
-- run ./vendor/bin/sail up rồi mở tab terminal mới
+- run ./vendor/bin/sail up rồi mở tab terminal mới ( nếu lỗi connect thì chạy lệnh chmod 666 /var/run/docker.sock rồi chạy lại)
 - Chạy lệnh ./vendor/bin/sail up mà ai dính lỗi "Array and string offset access syntax with curly braces is no longer supported in code example" ở "RUN pecl install mongodb && echo "extension=mongodb.so" > /etc/php/8.0/cli/php.ini" thì thêm  dòng này vô trước nó trong docker/8.0/Dockerfile:
 
 RUN curl -O https://pear.php.net/go-pear.phar
